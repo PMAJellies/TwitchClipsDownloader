@@ -12,14 +12,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 
+from webdriver_manager.chrome import ChromeDriverManager
 
 import time
 import urllib.request
 import urllib
 from tkinter import *
 from tkinter import filedialog
-
-
 
 newUrls = []
 basepath='C:/Users/User/Downloads/'
@@ -29,7 +28,8 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-extensions")
 chrome_options.binary_location = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-driver = webdriver.Chrome(options=chrome_options, executable_path=r'C:\webdrivers\chromedriver.exe')
+
+driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
         
 def on_closing():
     driver.close()
